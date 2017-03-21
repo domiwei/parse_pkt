@@ -1,10 +1,12 @@
-CC = gcc
-LNK = -lpcap
+CC = g++
+LNK = -lpcap -L. -lCFFEXtraderapi
+#CFLAG = -Wall
+CFLAG = 
 
 all: parse_pcap
 
-parse_pcap: parse_pcap.c
-	$(CC) parse_pcap.c $(LNK) -o parse_pcap
+parse_pcap: parse_pcap.cpp
+	$(CC) parse_pcap.cpp $(CFLAG) $(LNK) -o parse_pcap
 
 clean:
 	rm parse_pcap
