@@ -3,6 +3,8 @@
 #include <errno.h>
 #include <arpa/inet.h>
 #include <stdlib.h>
+#include <dlfcn.h>
+
 
 #include "pkt_header.h"
 //#include "CFFEXtraderapi.h"
@@ -49,15 +51,18 @@ void print_payload(const u_char *packet, int len)
 	}
 	printf("\n");
 }
+
+//extern class CFTDOrderField;
 int main(void)
 {
+		/*
 	const char *tcpdump_filename = "traffic";
 	char errbuf[PCAP_ERRBUF_SIZE];
 	struct pcap_pkthdr *header = NULL;
 	const u_char *packet = NULL;
 	long long pkg_count = 0;
-	const SniffIp *ip_addr; /* The IP header */
-	const SniffTcp *tcp_addr; /* The TCP header */
+	const SniffIp *ip_addr; // The IP header
+	const SniffTcp *tcp_addr; // The TCP header
 	const u_char *payload_addr;
 
 	pcap_t *handler = pcap_open_offline(tcpdump_filename, errbuf);
@@ -74,7 +79,25 @@ int main(void)
 		print_payload(payload_addr, payload_len);
 	}
 	pcap_close(handler);
+	*/
+	void *fh = NULL;
+	void (*func)();
+	printf("hahahaha\n");
+	fh = dlopen("./libCFFEXtraderapi.so", RTLD_LAZY);
+	printf("hahahaha\n");
+	if (!fh) {
+			printf("fail to open\n");
+			exit(-1);
+	}
+	printf("haha");
+	//dlerror();
+	func = (void(*)())dlsym(fh,"CFtdcTraderApiImpl::OnRspQryOrder");
+	if (func) {
+			printf("yaya!\n");
+	}
 
-	CFTDOrderField a;
+	dlclose(fh);
+
+	//CFTDOrderField a;
 }
 

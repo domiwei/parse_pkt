@@ -1,5 +1,5 @@
 CC = g++
-LNK = -lpcap -L. -lCFFEXtraderapi
+LNK = -ldl -lpcap #-L. -lCFFEXtraderapi
 #CFLAG = -Wall
 CFLAG = 
 
