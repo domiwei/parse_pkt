@@ -4,7 +4,7 @@
 #include <arpa/inet.h>
 #include <stdlib.h>
 #include <dlfcn.h>
-
+#include <openssl/ssl.h>
 
 #include "pkt_header.h"
 //#include "CFFEXtraderapi.h"
@@ -86,7 +86,7 @@ int main(void)
 	fh = dlopen("./libCFFEXtraderapi.so", RTLD_LAZY);
 	printf("hahahaha\n");
 	if (!fh) {
-			printf("fail to open\n");
+			printf("fail to open, %s\n", dlerror());
 			exit(-1);
 	}
 	printf("haha");
