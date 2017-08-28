@@ -5,8 +5,11 @@ CFLAG =
 
 all: parse_pcap
 
-parse_pcap: parse_pcap.cpp
-	$(CC) parse_pcap.cpp $(CFLAG) $(LNK) -o parse_pcap
+parse_pcap: parse_pcap.o
+	$(CC) parse_pcap.o $(CFLAG) $(LNK) -o parse_pcap
+
+parse_pcap.o: parse_pcap.cpp kewei.h
+	$(CC) -c parse_pcap.cpp -o parse_pcap.o
 
 clean:
-	rm parse_pcap
+	rm parse_pcap parse_pcap.o

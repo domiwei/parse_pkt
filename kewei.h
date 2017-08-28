@@ -5,7 +5,7 @@ void DescribeMemberOfCFTDOrderField();
 class CFTDOrderField {
 	public:
 		char *mDescribe;
-		void DescribeMembers();
+		char *DescribeMembers();
 	private:
 
 };

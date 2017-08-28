@@ -97,7 +97,7 @@ int main(void)
 	dlclose(fh);*/
 	CFTDOrderField a;
 	a.DescribeMembers();
-	printf("%s\n", a.mDescribe);
+	printf("%s\n", a.DescribeMembers());
 
 	//DescribeMemberOfCFTDOrderField();
 }
