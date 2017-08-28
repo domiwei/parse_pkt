@@ -1,5 +1,5 @@
 CC = g++
-LNK = -ldl -lpcap -lssl -L. -lCFFEXtraderapi #-lc #-lssl -lcrypto -lc #
+LNK = -lpcap -L./ -lCFFEXtraderapi -lssl -lcrypt  #-lc #-lssl -lcrypto -lc #
 #CFLAG = -Wall
 CFLAG = 
 

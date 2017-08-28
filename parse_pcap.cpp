@@ -7,7 +7,7 @@
 #include <openssl/ssl.h>
 
 #include "pkt_header.h"
-//#include "CFFEXtraderapi.h"
+#include "kewei.h"
 
 int parse_pkt_addr(const u_char *packet, const SniffIp **ip_addr,
 		const SniffTcp **tcp_addr, const u_char **payload_addr)
@@ -80,7 +80,7 @@ int main(void)
 	}
 	pcap_close(handler);
 	*/
-	void *fh = NULL;
+	/*void *fh = NULL;
 	void (*func)();
 	printf("hahahaha\n");
 	fh = dlopen("./libCFFEXtraderapi.so", RTLD_LAZY);
@@ -89,15 +89,16 @@ int main(void)
 			printf("fail to open, %s\n", dlerror());
 			exit(-1);
 	}
-	printf("haha");
-	//dlerror();
 	func = (void(*)())dlsym(fh,"CFtdcTraderApiImpl::OnRspQryOrder");
 	if (func) {
 			printf("yaya!\n");
 	}
 
-	dlclose(fh);
+	dlclose(fh);*/
+	CFTDOrderField a;
+	a.DescribeMembers();
+	printf("%s\n", a.mDescribe);
 
-	//CFTDOrderField a;
+	//DescribeMemberOfCFTDOrderField();
 }
 
