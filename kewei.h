@@ -9,3 +9,9 @@ class CFTDOrderField {
 	private:
 
 };
+
+class CompressUtil {
+	public:
+		void Zerodecompress(unsigned char const*, unsigned long, unsigned char*, unsigned long&);
+	private:
+};

@@ -43,6 +43,9 @@ void print_payload(const u_char *packet, int len)
 {
 	int i;
 	int count = 0;
+	CompressUtil utils;
+	unsigned char buf[500] = {0};
+	unsigned long retsize;
 
 	for (i = 0; i < len; i++) {
 		printf("%02x ", *(packet + i));
@@ -50,12 +53,14 @@ void print_payload(const u_char *packet, int len)
 			printf("\n");
 	}
 	printf("\n");
+	utils.Zerodecompress(packet, len, buf, retsize);
+	printf("%ld, %s\n",retsize, buf);
 }
 
 //extern class CFTDOrderField;
 int main(void)
 {
-		/*
+		
 	const char *tcpdump_filename = "traffic";
 	char errbuf[PCAP_ERRBUF_SIZE];
 	struct pcap_pkthdr *header = NULL;
@@ -79,26 +84,18 @@ int main(void)
 		print_payload(payload_addr, payload_len);
 	}
 	pcap_close(handler);
-	*/
-	/*void *fh = NULL;
-	void (*func)();
-	printf("hahahaha\n");
-	fh = dlopen("./libCFFEXtraderapi.so", RTLD_LAZY);
-	printf("hahahaha\n");
-	if (!fh) {
-			printf("fail to open, %s\n", dlerror());
-			exit(-1);
-	}
-	func = (void(*)())dlsym(fh,"CFtdcTraderApiImpl::OnRspQryOrder");
-	if (func) {
-			printf("yaya!\n");
-	}
-
-	dlclose(fh);*/
+/*	
 	CFTDOrderField a;
 	a.DescribeMembers();
-	printf("%s\n", a.DescribeMembers());
+	CompressUtil utils;
+	unsigned char buf[100] = "123324234545fsdnkjnjafdk";
+	unsigned char buf2[500] = {0};
+	unsigned long retsize;
 
+	printf("%s\n", a.DescribeMembers());
+	utils.Zerodecompress(buf, strlen((char *)buf), buf2, retsize);
+	printf("%ld, %s\n",retsize, buf2);
+*/
 	//DescribeMemberOfCFTDOrderField();
 }
 
